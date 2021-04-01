@@ -1,4 +1,4 @@
-// Задание №6
+// Урок № 7, Задание №6
 
 class Car {
     #brand;
@@ -63,7 +63,6 @@ class Car {
     get mileage() {
         return this.#mileage;
     };
-
 
     start() {
         if (this.#isStarted) throw new Error("Машина уже заведена");
