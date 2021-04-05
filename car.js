@@ -65,7 +65,7 @@ class Car {
         }
         this.#setFuelConsumptionFromConstructor(fuelConsumptionInit)
     }
-    
+
     #brand;
     get brand() {
         return this.#brand;
@@ -167,27 +167,4 @@ class Car {
 
 }
 
-let bibika = new Car(
-    brand = "ZAZ",
-    model = '90TFYO90TFYO90TFYO90TFYO0TFYO',
-    yearOfManufacturing = 2013,
-    maxSpeed = 180,
-    maxFuelVolume = 20,
-    fuelConsumption = 8
-)
-
-// bibika.brand = "sdfsdf sdf sdf dsf dsf sdf df sdf f dsf dsf sdf dsf dsf sdf df sdf f dsf dsf sdf dsf dsf sdf df sdf f dsf dsf ds f"
-bibika.fillUpGasTank(8);
-
-bibika.start()
-
-bibika.drive(100, 1)
-
-bibika.fillUpGasTank(20);
-
-bibika.shutDownEngine()
-
-console.log('bibika', bibika);
-
-
-// module.exports = Car
+module.exports = Car
