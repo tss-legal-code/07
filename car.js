@@ -1,18 +1,78 @@
 // Урок № 7, Задание №6
 
 class Car {
+
+    constructor(
+        brandInit,
+        modelInit,
+        yearOfManufacturingInit,
+        maxSpeedInit,
+        maxFuelVolumeInit,
+        fuelConsumptionInit
+    ) {
+
+        this.#setBrandFromConstructor = function(value) {
+            if (typeof(value) == "string" && value.length >= 1 && value.length <= 50) {
+                this.#brand = value;
+            } else {
+                throw new Error("brand: строка от =1 до =50 символов включительно");
+            }
+        };
+        this.#setBrandFromConstructor(brandInit);
+
+        this.#setModelFromConstructor = function(value) {
+            if (typeof(value) == "string" && value.length >= 1 && value.length <= 50) {
+                this.#model = value;
+            } else {
+                throw new Error("model: строка от =1 до =50 символов включительно");
+            }
+        };
+        this.#setModelFromConstructor(modelInit);
+
+        this.#setYearOfManufacturingFromConstructor = function(value) {
+            if (typeof(value) == "number" && value >= 1900 && value <= (new Date()).getFullYear()) {
+                this.#yearOfManufacturing = value;
+            } else {
+                throw new Error("yearOfManufacturing: число от =1900 до =текущего года включительно");
+            }
+        };
+        this.#setYearOfManufacturingFromConstructor(yearOfManufacturingInit);
+
+        this.#setMaxSpeedFromConstructor = function(value) {
+            if (typeof(value) == "number" && value >= 100 && value <= 300) {
+                this.#maxSpeed = value;
+            } else {
+                throw new Error("maxSpeed: число от =100 до =300 км/ч");
+            }
+        }
+        this.#setMaxSpeedFromConstructor(maxSpeedInit);
+
+        this.#setMaxFuelVolumeFromConstructor = function(value) {
+            if (typeof(value) == "number" && value >= 5 && value <= 20) {
+                this.#maxFuelVolume = value;
+            } else {
+                throw new Error("maxFuelVolume: число в литрах от =5 до =20");
+            }
+        }
+        this.#setMaxFuelVolumeFromConstructor(maxFuelVolumeInit);
+
+        this.#setFuelConsumptionFromConstructor = function(value) {
+            if (typeof(value) == "number") {
+                this.#fuelConsumption = value;
+            } else {
+                throw new Error("fuelConsumption: число в л/100км");
+            }
+        }
+        this.#setFuelConsumptionFromConstructor(fuelConsumptionInit)
+    }
+    
     #brand;
-    #setBrandFromConstructor
     get brand() {
         return this.#brand;
     };
+    #setBrandFromConstructor;
     set brand(value) {
         this.#setBrandFromConstructor(value)
-        // if (typeof(value) == "string" && value.length >= 1 && value.length <= 50) {
-        //     this.#brand = value;
-        // } else {
-        //     throw new Error("brand: строка от =1 до =50 символов включительно");
-        // }
     };
 
 
@@ -20,60 +80,45 @@ class Car {
     get model() {
         return this.#model;
     };
+    #setModelFromConstructor;
     set model(value) {
-        if (typeof(value) == "string" && value.length >= 1 && value.length <= 50) {
-            this.#model = value;
-        } else {
-            throw new Error("model: строка от =1 до =50 символов включительно");
-        }
+        this.#setModelFromConstructor(value)
     };
 
     #yearOfManufacturing;
     get yearOfManufacturing() {
         return this.#yearOfManufacturing;
     };
+    #setYearOfManufacturingFromConstructor;
     set yearOfManufacturing(value) {
-        if (typeof(value) == "number" && value >= 1900 && value <= (new Date()).getFullYear()) {
-            this.#yearOfManufacturing = value;
-        } else {
-            throw new Error("yearOfManufacturing: число от =1900 до =текущего года включительно");
-        }
+        this.#setYearOfManufacturingFromConstructor(value)
     };
 
     #maxSpeed;
     get maxSpeed() {
         return this.#maxSpeed;
     };
+    #setMaxSpeedFromConstructor;
     set maxSpeed(value) {
-        if (typeof(value) == "number" && value >= 100 && value <= 300) {
-            this.#maxSpeed = value;
-        } else {
-            throw new Error("maxSpeed: число от =100 до =300 км/ч");
-        }
+        this.#setMaxSpeedFromConstructor(value)
     };
 
     #maxFuelVolume;
     get maxFuelVolume() {
         return this.#maxFuelVolume;
     };
+    #setMaxFuelVolumeFromConstructor
     set maxFuelVolume(value) {
-        if (typeof(value) == "number" && value >= 5 && value <= 20) {
-            this.#maxFuelVolume = value;
-        } else {
-            throw new Error("maxFuelVolume: число в литрах от =5 до =20");
-        }
+        this.#setMaxFuelVolumeFromConstructor(value)
     };
 
     #fuelConsumption;
     get fuelConsumption() {
         return this.#fuelConsumption;
     };
+    #setFuelConsumptionFromConstructor
     set fuelConsumption(value) {
-        if (typeof(value) == "number") {
-            this.#fuelConsumption = value;
-        } else {
-            throw new Error("fuelConsumption: число в л/100км");
-        }
+        this.#setFuelConsumptionFromConstructor(value)
     };
 
     #currentFuelVolume = 0;
@@ -119,66 +164,11 @@ class Car {
         this.#currentFuelVolume -= speed * duration * this.#fuelConsumption / 100;
         this.#mileage += speed * duration;
     }
-    constructor(
-        brandInit,
-        modelInit,
-        yearOfManufacturingInit,
-        maxSpeedInit,
-        maxFuelVolumeInit,
-        fuelConsumptionInit
-    ) {
 
-        this.#setBrandFromConstructor = function(value) {
-            if (typeof(value) == "string" && value.length >= 1 && value.length <= 50) {
-                this.#brand = value;
-            } else {
-                throw new Error("brand: строка от =1 до =50 символов включительно");
-            }
-        }
-        this.#setBrandFromConstructor(brandInit)
-
-
-        // if (typeof(brandInit) == "string" && brandInit.length >= 1 && brandInit.length <= 50) {
-        //     this.#brand = brandInit;
-        // } else {
-        //     throw new Error("brand: строка от =1 до =50 символов включительно");
-        // }
-
-        if (typeof(modelInit) == "string" && modelInit.length >= 1 && modelInit.length <= 50) {
-            this.#model = modelInit;
-        } else {
-            throw new Error("model: строка от =1 до =50 символов включительно");
-        }
-
-        if (typeof(yearOfManufacturingInit) == "number" && yearOfManufacturingInit >= 1900 && yearOfManufacturingInit <= (new Date()).getFullYear()) {
-            this.#yearOfManufacturing = yearOfManufacturingInit;
-        } else {
-            throw new Error("yearOfManufacturing: число от =1900 до =текущего года включительно");
-        }
-
-        if (typeof(maxSpeedInit) == "number" && maxSpeedInit >= 100 && maxSpeedInit <= 300) {
-            this.#maxSpeed = maxSpeedInit;
-        } else {
-            throw new Error("maxSpeed: число от =100 до =300 км/ч");
-        }
-
-        if (typeof(maxFuelVolumeInit) == "number" && maxFuelVolumeInit >= 5 && maxFuelVolumeInit <= 20) {
-            this.#maxFuelVolume = maxFuelVolumeInit;
-        } else {
-            throw new Error("maxFuelVolume: число в литрах от =5 до =20");
-        }
-
-        if (typeof(fuelConsumptionInit) == "number") {
-            this.#fuelConsumption = fuelConsumptionInit;
-        } else {
-            throw new Error("fuelConsumption: число в л/100км");
-        }
-
-    }
 }
 
-let bibika = new Car (
-    brand = 'ZAZ90TFYO90TFYO90TFYO90T0TFYO',
+let bibika = new Car(
+    brand = "ZAZ",
     model = '90TFYO90TFYO90TFYO90TFYO0TFYO',
     yearOfManufacturing = 2013,
     maxSpeed = 180,
@@ -186,7 +176,7 @@ let bibika = new Car (
     fuelConsumption = 8
 )
 
-bibika.brand = "sdfsdf sdf sdf dsf dsf sdf df sdf f dsf dsf sdf dsf dsf sdf df sdf f dsf dsf sdf dsf dsf sdf df sdf f dsf dsf ds f"
+// bibika.brand = "sdfsdf sdf sdf dsf dsf sdf df sdf f dsf dsf sdf dsf dsf sdf df sdf f dsf dsf sdf dsf dsf sdf df sdf f dsf dsf ds f"
 bibika.fillUpGasTank(8);
 
 bibika.start()
